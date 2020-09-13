@@ -241,14 +241,22 @@ export default function vaquita() {
                 pos: [39.8, 58.6],
                 rot: -5
             },
-            // {
-            //     id: 30,
-            //     color: "#c28e23",
-            //     dir: "Top",
-            //     sides: [13, 5, 0, 16] ,
-            //     pos: [32.1, 52.1],
-            //     rot: -14
-            // },
+            {
+                id: 30,
+                color: "#272c2e",
+                dir: "Bottom",
+                sides: [0, 0, 0, 0] ,
+                pos: [50, 50],
+                rot: 0
+            },
+            {
+                id: 31,
+                color: "#272c2e",
+                dir: "Bottom",
+                sides: [0, 0, 0, 0] ,
+                pos: [50, 50],
+                rot: 0
+            },
         ]
     )
 }

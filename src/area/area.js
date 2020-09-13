@@ -10,9 +10,18 @@ export class Area extends Component {
         currentAnimal: 0
     }
 
-    changeAnimal = () => {
+    changeAnimal = (dir) => {
+        const { currentAnimal, animals } = this.state
+        if(currentAnimal === animals.length-1 && dir > 0){
+            this.setState({ currentAnimal: 0 })
+            return
+        }
+        if(currentAnimal === 0 && dir < 0){
+            this.setState({ currentAnimal: animals.length-1 })
+            return
+        }
         this.setState(prevState => ({
-            currentAnimal: prevState.currentAnimal++
+            currentAnimal: prevState.currentAnimal + dir
         }))
     }
 
@@ -30,7 +39,8 @@ export class Area extends Component {
                         delay = {delay}
                 />)})
                 }
-                <button onClick={this.changeAnimal}>Next</button>
+                <button onClick={()=>this.changeAnimal(-1)}>Prev</button>
+                <button onClick={()=>this.changeAnimal(1)}>Next</button>
             </div>
         )
     }
