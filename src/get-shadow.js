@@ -1,11 +1,11 @@
 import helmetedHornbill from './animals/helmeted-hormbill'
 import vaquita from './animals/vaquita'
 
-export default function getData() {
+export default function getShadows() {
     return (
         [
-            [...helmetedHornbill().parts],
-            [...vaquita().parts]
+            [...helmetedHornbill().shadows],
+            [...vaquita().shadows]
         ]
     )
 }

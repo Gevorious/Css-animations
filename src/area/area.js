@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import './area.css'
 import Block from '../block/block'
-import getData from '../get-data.js'
+import getData from '../get-data'
+import Shadow from '../shadows/shadow'
+import getShadows from '../get-shadow'
 
-export class Area extends Component {
+
+class Area extends Component {
 
     state = {
         animals: getData(),
-        currentAnimal: 0
+        shadows: getShadows(),
+        currentAnimal: 1
     }
 
     changeAnimal = (dir) => {
@@ -26,21 +30,32 @@ export class Area extends Component {
     }
 
     render() {
-        const { animals, currentAnimal } = this.state
+        const { animals, currentAnimal, shadows } = this.state
         let delay = 0
         return (
-            <div className="area">
-                { 
-                animals[currentAnimal].map(data =>{
-                    delay += 0.04
-                return(<Block
-                        key = {data.id}
-                        data = {data}
-                        delay = {delay}
-                />)})
-                }
-                <button onClick={()=>this.changeAnimal(-1)}>Prev</button>
-                <button onClick={()=>this.changeAnimal(1)}>Next</button>
+            <div className="container">
+               <div className="area">
+                    { 
+                    animals[currentAnimal].map(data =>{
+                        delay += 0.05
+                    return(<Block
+                            key = {data.id}
+                            data = {data}
+                            delay = {delay}
+                    />)})
+                    }
+                    {
+                    shadows[currentAnimal].map((shadow, index) => 
+                        <Shadow 
+                            key={index}
+                            width={shadow.width}
+                            left={shadow.left}
+                            opacity={shadow.opacity}
+                            />)
+                    }
+                    <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
+                    <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i>
+                </div> 
             </div>
         )
     }

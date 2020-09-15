@@ -10,8 +10,8 @@ const Block = ({ data, delay }) => {
         borderBottom: `${sides[2]}px solid transparent`,
         borderLeft: `${sides[3]}px solid transparent`,
 
-        top: `${pos[0]}%`,
-        left:`${pos[1]}%`,
+        top: `${pos[0]}px`,
+        left:`${pos[1]}px`,
         transform: `rotate(${rot}deg)`,
         transitionDelay: `${delay}s`,
     }
