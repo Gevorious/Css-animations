@@ -5,7 +5,6 @@ const Shadow = ({width, left, top, opacity}) => {
     const style = {
         width: `${width}px`,
         transform: `translate(${left}px, ${top}px)`,
-        // left: `${left}px`,
         opacity: `${opacity}`
     }
     return (

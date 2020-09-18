@@ -1,6 +1,8 @@
 export default function helmetedHornbill() {
     return (
         {
+            name: 'Helmeted Hornbill',
+            background: '#c086f7',
             shadows: [
                 {width: 80, left: 0, top: 460, opacity: 0.6},
                 {width: 400, left: 10, top: 460, opacity: 1},

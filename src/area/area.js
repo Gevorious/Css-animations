@@ -1,39 +1,62 @@
 import React, { Component } from 'react'
 import './area.css'
 import Block from '../block/block'
-import getData from '../get-data'
+import { getParts,
+         getShadows,
+         getBackground,
+         getName } from '../get-data'
 import Shadow from '../shadows/shadow'
-import getShadows from '../get-shadow'
-
 
 class Area extends Component {
 
     state = {
-        animals: getData(),
+        animals: getParts(),
         shadows: getShadows(),
+        background: getBackground(),
+        name: getName(),
         currentAnimal: 0
     }
 
     changeAnimal = (dir) => {
         const { currentAnimal, animals } = this.state
-        if(currentAnimal === animals.length-1 && dir > 0){
-            this.setState({ currentAnimal: 0 })
-            return
+        if(dir){
+            if(currentAnimal === animals.length-1 && dir > 0){
+                this.setState({ currentAnimal: 0 })
+                return
+            }
+            if(currentAnimal === 0 && dir < 0){
+                this.setState({ currentAnimal: animals.length-1 })
+                return
+            }
+            this.setState(prevState => ({
+                currentAnimal: prevState.currentAnimal + dir
+            }))
         }
-        if(currentAnimal === 0 && dir < 0){
-            this.setState({ currentAnimal: animals.length-1 })
-            return
-        }
-        this.setState(prevState => ({
-            currentAnimal: prevState.currentAnimal + dir
-        }))
     }
 
     render() {
-        const { animals, currentAnimal, shadows } = this.state
+        const { animals, 
+                currentAnimal, 
+                shadows, 
+                background, 
+                name } = this.state
+
+        const style = {
+            backgroundColor: `${background[currentAnimal]}`
+        }
+
         let delay = 0
         return (
-            <div className="container">
+            <div className="container" style={style} onWheel={(e)=>{
+                let dir = null
+                if(e.deltaY>0){
+                    dir = 1
+                }
+                if(e.deltaY<0){
+                    dir = -1
+                }
+                this.changeAnimal(dir)
+                }}>
                <div className="area">
                     { 
                     animals[currentAnimal].map(data =>{
@@ -55,8 +78,9 @@ class Area extends Component {
                             />)
                     }
                 </div>
+                <div className="name">{name[currentAnimal]}</div>
                 <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
-                <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i> 
+                <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i>
             </div>
         )
     }
