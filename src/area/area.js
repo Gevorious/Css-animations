@@ -11,7 +11,7 @@ class Area extends Component {
     state = {
         animals: getData(),
         shadows: getShadows(),
-        currentAnimal: 1
+        currentAnimal: 0
     }
 
     changeAnimal = (dir) => {
@@ -49,13 +49,14 @@ class Area extends Component {
                         <Shadow 
                             key={index}
                             width={shadow.width}
+                            top={shadow.top}
                             left={shadow.left}
                             opacity={shadow.opacity}
                             />)
                     }
-                    <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
-                    <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i>
-                </div> 
+                </div>
+                <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
+                <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i> 
             </div>
         )
     }

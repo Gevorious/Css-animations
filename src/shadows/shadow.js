@@ -1,10 +1,11 @@
 import React from 'react'
 import './shadow.css'
 
-const Shadow = ({width, left, opacity}) => {
+const Shadow = ({width, left, top, opacity}) => {
     const style = {
         width: `${width}px`,
-        left: `${left}%`,
+        transform: `translate(${left}px, ${top}px)`,
+        // left: `${left}px`,
         opacity: `${opacity}`
     }
     return (
