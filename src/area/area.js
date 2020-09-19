@@ -14,7 +14,7 @@ class Area extends Component {
         shadows: getShadows(),
         background: getBackground(),
         name: getName(),
-        currentAnimal: 0
+        currentAnimal: 2
     }
 
     changeAnimal = (dir) => {
@@ -57,27 +57,27 @@ class Area extends Component {
                 }
                 this.changeAnimal(dir)
                 }}>
-               <div className="area">
-                    { 
-                    animals[currentAnimal].map(data =>{
-                        delay += 0.05
-                    return(<Block
-                            key = {data.id}
-                            data = {data}
-                            delay = {delay}
-                    />)})
-                    }
-                    {
-                    shadows[currentAnimal].map((shadow, index) => 
-                        <Shadow 
-                            key={index}
-                            width={shadow.width}
-                            top={shadow.top}
-                            left={shadow.left}
-                            opacity={shadow.opacity}
-                            />)
-                    }
-                </div>
+                    <div className="area">
+                        { 
+                        animals[currentAnimal].map(data =>{
+                            delay += 0.03
+                        return(<Block
+                                key = {data.id}
+                                data = {data}
+                                delay = {delay}
+                        />)})
+                        }
+                        {
+                        shadows[currentAnimal].map((shadow, index) => 
+                            <Shadow 
+                                key={index}
+                                width={shadow.width}
+                                top={shadow.top}
+                                left={shadow.left}
+                                opacity={shadow.opacity}
+                                />)
+                        }
+                    </div>
                 <div className="name">{name[currentAnimal]}</div>
                 <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
                 <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i>

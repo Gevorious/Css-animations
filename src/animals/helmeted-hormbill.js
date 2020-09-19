@@ -269,6 +269,14 @@ export default function helmetedHornbill() {
                     pos: [200, 346],
                     rot: 31
                 },
+                {
+                    id: 32,
+                    color: "none",
+                    dir: "Bottom",
+                    sides: [1, 1, 1, 1] ,
+                    pos: [300, 230],
+                    rot: 0
+                },
             ]
         }
     )

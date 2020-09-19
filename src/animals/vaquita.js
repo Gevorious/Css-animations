@@ -266,6 +266,14 @@ export default function vaquita() {
                     pos: [300, 230],
                     rot: 0
                 },
+                {
+                    id: 32,
+                    color: "none",
+                    dir: "Bottom",
+                    sides: [1, 1, 1, 1] ,
+                    pos: [300, 230],
+                    rot: 0
+                },
             ]
         }
     )
