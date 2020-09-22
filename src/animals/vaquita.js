@@ -254,7 +254,7 @@ export default function vaquita() {
                     id: 30,
                     color: "none",
                     dir: "Bottom",
-                    sides: [1, 1, 1, 1] ,
+                    sides: [0, 0, 0, 0] ,
                     pos: [300, 230],
                     rot: 0
                 },
@@ -262,16 +262,16 @@ export default function vaquita() {
                     id: 31,
                     color: "none",
                     dir: "Bottom",
-                    sides: [1, 1, 1, 1] ,
-                    pos: [300, 230],
+                    sides: [0, 0, 0, 0] ,
+                    pos: [400, 400],
                     rot: 0
                 },
                 {
                     id: 32,
                     color: "none",
                     dir: "Bottom",
-                    sides: [1, 1, 1, 1] ,
-                    pos: [300, 230],
+                    sides: [0, 0, 0, 0] ,
+                    pos: [452, 305],
                     rot: 0
                 },
             ]

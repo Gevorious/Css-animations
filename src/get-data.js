@@ -1,42 +1,9 @@
-import helmetedHornbill from './animals/helmeted-hormbill'
-import vaquita from './animals/vaquita'
-import goldenLionTamarin from './animals/golden-lion-tamarin'
+import * as animals from './animals'
 
-export function getParts() {
-    return (
-        [
-            [...helmetedHornbill().parts],
-            [...vaquita().parts],
-            [...goldenLionTamarin().parts]
-        ]
-    )
-}
-
-export function getShadows() {
-    return (
-        [
-            [...helmetedHornbill().shadows],
-            [...vaquita().shadows],
-            [...goldenLionTamarin().shadows]
-        ]
-    )
-}
-
-export function getBackground() {
-    return (
-        [
-            helmetedHornbill().background,
-            vaquita().background,
-            goldenLionTamarin().background
-        ]
-    )
-}
-export function getName() {
-    return (
-        [
-            helmetedHornbill().name,
-            vaquita().name,
-            goldenLionTamarin().name
-        ]
-    )
+export function getData(prop_name) {
+    const data = []
+    for(let animal of Object.values(animals)){
+        data.push(animal()[prop_name])
+    }
+    return data
 }

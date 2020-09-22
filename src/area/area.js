@@ -1,84 +1,85 @@
 import React, { Component } from 'react'
 import './area.css'
 import Block from '../block/block'
-import { getParts,
-         getShadows,
-         getBackground,
-         getName } from '../get-data'
+import { getData } from '../get-data'
 import Shadow from '../shadows/shadow'
 
 class Area extends Component {
 
     state = {
-        animals: getParts(),
-        shadows: getShadows(),
-        background: getBackground(),
-        name: getName(),
-        currentAnimal: 2
+        animals: getData('parts'),
+        shadows: getData('shadows'),
+        background: getData('background'),
+        name: getData('name'),
+        idx: 0
     }
 
     changeAnimal = (dir) => {
-        const { currentAnimal, animals } = this.state
+        const { idx, animals } = this.state
         if(dir){
-            if(currentAnimal === animals.length-1 && dir > 0){
-                this.setState({ currentAnimal: 0 })
+            if(idx === animals.length-1 && dir > 0){
+                this.setState({ idx: 0 })
                 return
             }
-            if(currentAnimal === 0 && dir < 0){
-                this.setState({ currentAnimal: animals.length-1 })
+            if(idx === 0 && dir < 0){
+                this.setState({ idx: animals.length-1 })
                 return
             }
             this.setState(prevState => ({
-                currentAnimal: prevState.currentAnimal + dir
+                idx: prevState.idx + dir
             }))
         }
     }
 
+    wheelHandler = (e) => {
+        let dir = null
+        if(e.deltaY>0){
+            dir = 1
+        }
+        if(e.deltaY<0){
+            dir = -1
+        }
+        this.changeAnimal(dir)
+        }
+
     render() {
         const { animals, 
-                currentAnimal, 
+                idx, 
                 shadows, 
                 background, 
                 name } = this.state
 
         const style = {
-            backgroundColor: `${background[currentAnimal]}`
+            backgroundColor: `${background[idx]}`
         }
 
         let delay = 0
         return (
-            <div className="container" style={style} onWheel={(e)=>{
-                let dir = null
-                if(e.deltaY>0){
-                    dir = 1
-                }
-                if(e.deltaY<0){
-                    dir = -1
-                }
-                this.changeAnimal(dir)
-                }}>
+            <div className="container" style={style} onWheel={this.wheelHandler}>
                     <div className="area">
                         { 
-                        animals[currentAnimal].map(data =>{
-                            delay += 0.03
-                        return(<Block
+                        animals[idx].map(data =>{
+                            delay += 0.02
+                            return(<Block
                                 key = {data.id}
                                 data = {data}
                                 delay = {delay}
-                        />)})
+                            />)
+                        })
                         }
                         {
-                        shadows[currentAnimal].map((shadow, index) => 
+                        shadows[idx].map((shadow, index) => 
                             <Shadow 
                                 key={index}
                                 width={shadow.width}
                                 top={shadow.top}
                                 left={shadow.left}
                                 opacity={shadow.opacity}
-                                />)
+                            />
+                        )
                         }
                     </div>
-                <div className="name">{name[currentAnimal]}</div>
+                <div className="name">{name[idx]}</div>
                 <i className="fa fa-angle-up up" onClick={()=>this.changeAnimal(-1)}></i>
                 <i className="fa fa-angle-down down" onClick={()=>this.changeAnimal(1)}></i>
             </div>
