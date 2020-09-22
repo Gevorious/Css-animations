@@ -2,7 +2,8 @@
     position: absolute;
     width: 0; 
     height: 0;
-    box-shadow: -1px 200px 239px -25px rgba(0,0,0,0.44);
+    border-style: solid;
+    border-color: transparent;
     transition: border 0.5s ease-in, color 0.2s ease,
-    transform 0.7s ease-out,
+    transform 0.7s ease-out;
 }
