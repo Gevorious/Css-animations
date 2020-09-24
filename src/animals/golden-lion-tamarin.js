@@ -5,7 +5,7 @@ export default function goldenLionTamarin() {
             background: '#ff99ce',
             shadows: [
                 {width: 140, left: 10, top: 460, opacity: 0.9},
-                {width: 300, left: 30, top: 460, opacity: 0.7},
+                {width: 300, left: 40, top: 460, opacity: 1},
                 {width: 280, left: 180, top: 460, opacity: 1},
             ],
 

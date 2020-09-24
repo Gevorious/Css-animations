@@ -59,7 +59,7 @@ class Area extends Component {
                     <div className="area">
                         { 
                         animals[idx].map(data =>{
-                            delay += 0.02
+                            delay += 0.05
                             return(<Block
                                 key = {data.id}
                                 data = {data}
