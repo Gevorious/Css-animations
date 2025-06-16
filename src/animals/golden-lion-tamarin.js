@@ -1,5 +1,4 @@
-export default function goldenLionTamarin() {
-    return (
+export const goldenLionTamarin =
         {
             name: 'Golden Lion Tamarin',
             background: '#ff99ce',
@@ -279,5 +278,3 @@ export default function goldenLionTamarin() {
                 },
             ]
         }
-    )
-}

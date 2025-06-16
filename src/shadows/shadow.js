@@ -1,4 +1,3 @@
-import React from 'react'
 import './shadow.css'
 
 const Shadow = ({width, left, top, opacity}) => {
@@ -8,9 +7,7 @@ const Shadow = ({width, left, top, opacity}) => {
         opacity: `${opacity}`
     }
     return (
-        <div className="shadow" style={style}>
-            
-        </div>
+        <div className="shadow" style={style} />   
     )
 }
 

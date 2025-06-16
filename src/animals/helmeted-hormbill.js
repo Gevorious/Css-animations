@@ -1,5 +1,4 @@
-export default function helmetedHornbill() {
-    return (
+export const helmetedHornbill =
         {
             name: 'Helmeted Hornbill',
             background: '#c086f7',
@@ -279,5 +278,3 @@ export default function helmetedHornbill() {
                 },
             ]
         }
-    )
-}

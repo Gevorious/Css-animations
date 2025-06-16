@@ -1,5 +1,4 @@
-export default function vaquita() {
-    return (
+export const vaquita =
         {
             name: 'Vaquita',
             background: '#73d7ff',
@@ -276,5 +275,3 @@ export default function vaquita() {
                 },
             ]
         }
-    )
-}
