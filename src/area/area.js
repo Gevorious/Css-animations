@@ -8,6 +8,7 @@ const Area = () => {
 
 const [index, setIndex] = useState(0);
     const debounceRef = useRef(null);
+    const touchStartRef = useRef(null);
 
     const changeAnimal = (dir) => {
         if(dir){
@@ -40,6 +41,36 @@ const [index, setIndex] = useState(0);
     }, 150);
   };
 
+  const touchStartHandler = (e) => {
+    touchStartRef.current = e.touches[0].clientY;
+  };
+
+  const touchEndHandler = (e) => {
+    if (!touchStartRef.current) return;
+
+    const touchEnd = e.changedTouches[0].clientY;
+    const diff = touchStartRef.current - touchEnd;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(diff) > minSwipeDistance) {
+      let dir = null;
+      if (diff > 0) dir = 1;
+      if (diff < 0) dir = -1;
+
+      if (dir !== null) {
+        if (debounceRef.current) {
+          clearTimeout(debounceRef.current);
+        }
+
+        debounceRef.current = setTimeout(() => {
+          changeAnimal(dir);
+        }, 150);
+      }
+    }
+
+    touchStartRef.current = null;
+  };
+
     const { parts, shadows, background, name } = data[index];
 
     const style = {
@@ -49,7 +80,13 @@ const [index, setIndex] = useState(0);
     let delay = 0
 
     return (
-        <div className="container" style={style} onWheel={wheelHandler}>
+        <div 
+            className="container" 
+            style={style} 
+            onWheel={wheelHandler}
+            onTouchStart={touchStartHandler}
+            onTouchEnd={touchEndHandler}
+        >
                 <div className="area">
                     { 
                     parts.map(data =>{
